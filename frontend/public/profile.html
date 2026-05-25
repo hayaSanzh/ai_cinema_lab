@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="namespace-it">
+    <meta name="description" content="AIForge profile settings">
+    <title>AIForge - Profile</title>
+    <link rel="shortcut icon" href="assets/img/favicon.svg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/color.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages/profile.css?v=2">
+</head>
+
+<body class="body-bg">
+
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="A" class="letters-loading">A</span>
+                <span data-text-preloader="I" class="letters-loading">I</span>
+                <span data-text-preloader="F" class="letters-loading">F</span>
+                <span data-text-preloader="O" class="letters-loading">O</span>
+                <span data-text-preloader="R" class="letters-loading">R</span>
+                <span data-text-preloader="G" class="letters-loading">G</span>
+                <span data-text-preloader="E" class="letters-loading">E</span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <button id="back-top" class="back-to-top">
+        <i class="fa-regular fa-arrow-up"></i>
+    </button>
+
+    <!-- Offcanvas Area Start -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button>
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text d-none d-xl-block">
+                        <b>AI Cinema Lab</b> is a creative research space exploring how <b>artificial intelligence</b>
+                        transforms cinema - from digital actors and deepfakes to emotional storytelling and perception.
+                        It is a bridge between human creativity and machine vision, revealing the thin line
+                        between reality and simulation in modern film.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+
+    <!-- Header Section Start -->
+    <header id="header-sticky" class="header-1">
+        <div class="container-fluid">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li class="has-dropdown">
+                                            <a href="quiz.html">AI/Real Quiz</a>
+                                        </li>
+                                        <li>
+                                            <a href="about.html">About Us</a>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a href="cases.html">Cases</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a href="register.html" class="join-text header-join-now">Join now</a>
+                        <div class="header__hamburger d-xl-block my-auto">
+                            <div class="sidebar__toggle">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Section Start -->
+    <section class="login-section section-padding fix bg-cover"
+        style="background-image: url('assets/img/service/Pattern.png');">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="login-wrapper profile-card">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="signin-item">
+                                    <div class="sign-header">
+                                        <h3>Edit profile</h3>
+                                        <p>Update your avatar and display name</p>
+                                    </div>
+
+                                    <form action="#" class="mt-4" id="profileForm">
+                                        <div class="profile-avatar-control">
+                                            <div class="profile-avatar-preview" id="profileAvatarPreview">AI</div>
+                                            <div class="profile-avatar-actions">
+                                                <label class="profile-avatar-button" for="profileAvatar">
+                                                    <i class="fa-regular fa-image"></i>
+                                                    Upload avatar
+                                                </label>
+                                                <input id="profileAvatar" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+                                                <p class="profile-avatar-hint">PNG, JPG, WEBP or GIF. Large images will be compressed.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-item">
+                                            <span class="lable-text">Your Name</span>
+                                            <input type="text" name="name" id="profileName" placeholder="Your name" autocomplete="name" minlength="2" maxlength="120" required>
+                                            <div class="icon">
+                                                <i class="fa-regular fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="input-item">
+                                            <span class="lable-text">Email Address</span>
+                                            <input id="profileEmail" type="email" autocomplete="email" readonly>
+                                            <div class="icon">
+                                                <i class="fa-regular fa-envelope"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-actions">
+                                            <button type="submit" class="theme-btn">Save changes <i
+                                                    class="fa-sharp fa-regular fa-arrow-up-right"></i></button>
+                                            <button type="button" class="profile-sign-out" id="profileSignOut">
+                                                <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                                                Sign out
+                                            </button>
+                                        </div>
+                                        <p class="profile-feedback" id="profileFeedback" aria-live="polite"></p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section Start -->
+    <footer class="footer-section footer-bg">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-wrapper text-center">
+                    <div class="logo-img wow fadeInUp mb-3" data-wow-delay=".3s">
+                        <a href="index.html">
+                            <img src="assets/img/logo/white-logo.svg" alt="AI Cinema Lab logo" class="footer-logo">
+                        </a>
+                    </div>
+                    <p class="wow fadeInUp footer-credit" data-wow-delay=".5s">
+                        Created by <b>Ainissa Sarsenbayeva</b> and <b>Zhaniya Serikbayeva</b> &mdash;
+                        students of <b>Astana IT University</b>, <br>School of Creative Industries.
+                    </p>
+                    <div class="footer-social-links wow fadeInUp" data-wow-delay=".7s">
+                        <a href="https://www.instagram.com/aitu_creative?igsh=b2h3NmNzb2JhbHNi" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://t.me/aicommunityaitu" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/pages/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/pages/auth-ui.js"></script>
+    <script src="assets/js/pages/profile.js?v=3"></script>
+</body>
+
+</html>

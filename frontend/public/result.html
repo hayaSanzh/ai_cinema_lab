@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your AI Perception Result | AI Cinema Lab</title>
+  <link rel="stylesheet" href="assets/css/pages/result.css">
+</head>
+
+<body data-layout="bare">
+
+  <h1 id="scoreText">Loading...</h1>
+  <div class="score-box">
+    <p id="scoreMessage">Calculating your perception skill...</p>
+  </div>
+
+  <p class="quote">"AI may fool the eyes, but never the imagination."</p>
+
+  <section id="averageScorePanel" class="average-score" aria-label="Среднее количество верных ответов" hidden>
+    <div class="average-score-header">
+      <span>Average Score</span>
+      <strong id="averageScoreValue">0%</strong>
+    </div>
+    <div class="average-score-track">
+      <div id="averageScoreFill" class="average-score-fill"></div>
+    </div>
+  </section>
+
+  <a href="quiz.html" class="theme-btn">Try Again</a>
+
+  <script src="assets/js/pages/layout.js"></script>
+  <script src="assets/js/pages/result.js"></script>
+
+</body>
+</html>

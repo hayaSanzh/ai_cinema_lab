@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: aiforge-postgres
+    environment:
+      POSTGRES_DB: aiforge
+      POSTGRES_USER: aiforge
+      POSTGRES_PASSWORD: aiforge_password
+    ports:
+      - "55432:5432"
+    volumes:
+      - aiforge-postgres-data:/var/lib/postgresql/data
+      - ./backend/prisma/docker:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aiforge -d aiforge"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  aiforge-postgres-data:

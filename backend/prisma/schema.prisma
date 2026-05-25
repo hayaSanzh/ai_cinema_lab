@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String               @id @default(uuid())
+  name                String
+  email               String               @unique
+  passwordHash        String               @map("password_hash")
+  avatarPath          String?              @map("avatar_path")
+  createdAt           DateTime             @default(now()) @map("created_at")
+  updatedAt           DateTime             @updatedAt @map("updated_at")
+  passwordResetTokens PasswordResetToken[]
+  quizAttempts        QuizAttempt[]
+  postLikes           PostLike[]
+  postComments        PostComment[]
+
+  @@map("users")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  tokenHash String    @unique @map("token_hash")
+  userId    String    @map("user_id")
+  expiresAt DateTime  @map("expires_at")
+  usedAt    DateTime? @map("used_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("password_reset_tokens")
+}
+
+model QuizQuestion {
+  id             String              @id @default(uuid())
+  slug           String              @unique
+  title          String
+  mediaType      String              @map("media_type")
+  mediaPath      String              @map("media_path")
+  correctAnswer  String              @map("correct_answer")
+  sortOrder      Int                 @map("sort_order")
+  createdAt      DateTime            @default(now()) @map("created_at")
+  attemptAnswers QuizAttemptAnswer[]
+
+  @@map("quiz_questions")
+}
+
+model QuizAttempt {
+  id           String              @id @default(uuid())
+  userId       String?             @map("user_id")
+  scorePercent Int                 @map("score_percent")
+  createdAt    DateTime            @default(now()) @map("created_at")
+  user         User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+  answers      QuizAttemptAnswer[]
+
+  @@index([userId])
+  @@map("quiz_attempts")
+}
+
+model QuizAttemptAnswer {
+  id             String       @id @default(uuid())
+  attemptId      String       @map("attempt_id")
+  questionId     String       @map("question_id")
+  selectedAnswer String       @map("selected_answer")
+  isCorrect      Boolean      @map("is_correct")
+  attempt        QuizAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question       QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([attemptId])
+  @@index([questionId])
+  @@map("quiz_attempt_answers")
+}
+
+model Post {
+  id          String        @id @default(uuid())
+  slug        String        @unique
+  title       String
+  youtubeUrl  String        @map("youtube_url")
+  description String?
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+  likes       PostLike[]
+  comments    PostComment[]
+
+  @@map("posts")
+}
+
+model PostLike {
+  id          String   @id @default(uuid())
+  postId      String   @map("post_id")
+  userId      String?  @map("user_id")
+  anonymousId String?  @map("anonymous_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@index([userId])
+  @@index([anonymousId])
+  @@map("post_likes")
+}
+
+model PostComment {
+  id        String   @id @default(uuid())
+  postId    String   @map("post_id")
+  userId    String   @map("user_id")
+  body      String
+  rating    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@index([userId])
+  @@map("post_comments")
+}

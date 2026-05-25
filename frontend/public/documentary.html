@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="namespace-it">
+    <meta name="description" content="AI Cinema Lab documentary film discussion">
+    <title>Documentary Film | AI Cinema Lab</title>
+    <link rel="shortcut icon" href="assets/img/favicon.svg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/color.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages/documentary.css">
+</head>
+
+<body class="body-bg documentary-page">
+    <main class="documentary-shell">
+        <section class="documentary-hero section-padding">
+            <div class="container">
+                <div class="documentary-content">
+                    <div class="documentary-heading">
+                        <p class="documentary-eyebrow">Featured post</p>
+                        <h1 id="postTitle">Documentary Film</h1>
+                    </div>
+
+                    <div class="documentary-video" id="videoFrameWrap">
+                        <iframe
+                            id="postVideo"
+                            title="Documentary film video"
+                            src=""
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+
+                    <div class="documentary-actions">
+                        <p id="postDescription" class="documentary-description"></p>
+                        <button type="button" class="documentary-like" id="likeButton" aria-pressed="false">
+                            <i class="fa-regular fa-heart"></i>
+                            <span id="likeButtonText">Like</span>
+                            <strong id="likeCount">0</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="documentary-comments-section">
+            <div class="container">
+                <div class="documentary-comments-layout">
+                    <div class="comments-list-panel">
+                        <h2>Comments (<span id="commentCount">0</span>)</h2>
+                        <div id="commentsList" class="comments-list"></div>
+                    </div>
+
+                    <aside class="comment-form-panel">
+                        <h3>Leave a review</h3>
+                        <p id="commentAuthHint" hidden></p>
+                        <form id="commentForm" class="comment-form">
+                            <div class="rating-picker" id="ratingPicker" aria-label="Rating">
+                                <button type="button" data-rating="1" aria-label="1 star"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" data-rating="2" aria-label="2 stars"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" data-rating="3" aria-label="3 stars"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" data-rating="4" aria-label="4 stars"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" data-rating="5" aria-label="5 stars"><i class="fa-solid fa-star"></i></button>
+                            </div>
+                            <textarea id="commentBody" maxlength="1200" minlength="3" placeholder="Write your review" required></textarea>
+                            <button type="submit" class="theme-btn">Post review <i class="fa-sharp fa-regular fa-arrow-up-right"></i></button>
+                        </form>
+                        <p class="documentary-feedback" id="documentaryFeedback" aria-live="polite"></p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/pages/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/pages/auth-ui.js"></script>
+    <script src="assets/js/pages/documentary.js"></script>
+</body>
+
+</html>

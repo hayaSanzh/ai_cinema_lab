@@ -1,0 +1,74 @@
+{
+  "questions": [
+    {
+      "id": "scene-1",
+      "title": "Scene 1",
+      "type": "image",
+      "media": "assets/img/quiz/1.jpg",
+      "answer": "ai"
+    },
+    {
+      "id": "scene-2",
+      "title": "Scene 2",
+      "type": "image",
+      "media": "assets/img/quiz/2.jpg",
+      "answer": "real"
+    },
+    {
+      "id": "scene-3",
+      "title": "Scene 3",
+      "type": "image",
+      "media": "assets/img/quiz/3.jpg",
+      "answer": "real"
+    },
+    {
+      "id": "scene-4",
+      "title": "Scene 4",
+      "type": "image",
+      "media": "assets/img/quiz/4.jpg",
+      "answer": "ai"
+    },
+    {
+      "id": "scene-5",
+      "title": "Scene 5",
+      "type": "image",
+      "media": "assets/img/quiz/5.jpg",
+      "answer": "ai"
+    },
+    {
+      "id": "scene-6",
+      "title": "Scene 6",
+      "type": "video",
+      "media": "assets/video/6.mp4",
+      "answer": "real"
+    },
+    {
+      "id": "scene-7",
+      "title": "Scene 7",
+      "type": "video",
+      "media": "assets/video/7.mp4",
+      "answer": "ai"
+    },
+    {
+      "id": "scene-8",
+      "title": "Scene 8",
+      "type": "video",
+      "media": "assets/video/8.mp4",
+      "answer": "real"
+    },
+    {
+      "id": "scene-9",
+      "title": "Scene 9",
+      "type": "video",
+      "media": "assets/video/9.mp4",
+      "answer": "real"
+    },
+    {
+      "id": "scene-10",
+      "title": "Scene 10",
+      "type": "video",
+      "media": "assets/video/10.mp4",
+      "answer": "ai"
+    }
+  ]
+}

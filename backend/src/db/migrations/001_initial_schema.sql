@@ -1,0 +1,63 @@
+CREATE TABLE users (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  avatar_path VARCHAR(255),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE quiz_questions (
+  id BIGSERIAL PRIMARY KEY,
+  slug VARCHAR(80) NOT NULL UNIQUE,
+  title VARCHAR(120) NOT NULL,
+  media_type VARCHAR(20) NOT NULL,
+  media_path VARCHAR(255) NOT NULL,
+  correct_answer VARCHAR(20) NOT NULL,
+  sort_order INTEGER NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE quiz_attempts (
+  id BIGSERIAL PRIMARY KEY,
+  user_id BIGINT REFERENCES users(id) ON DELETE SET NULL,
+  score_percent INTEGER NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE quiz_attempt_answers (
+  id BIGSERIAL PRIMARY KEY,
+  attempt_id BIGINT NOT NULL REFERENCES quiz_attempts(id) ON DELETE CASCADE,
+  question_id BIGINT NOT NULL REFERENCES quiz_questions(id) ON DELETE CASCADE,
+  selected_answer VARCHAR(20) NOT NULL,
+  is_correct BOOLEAN NOT NULL
+);
+
+CREATE TABLE posts (
+  id BIGSERIAL PRIMARY KEY,
+  slug VARCHAR(120) NOT NULL UNIQUE,
+  title VARCHAR(180) NOT NULL,
+  youtube_url TEXT NOT NULL,
+  description TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE post_likes (
+  id BIGSERIAL PRIMARY KEY,
+  post_id BIGINT NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+  user_id BIGINT REFERENCES users(id) ON DELETE CASCADE,
+  anonymous_id VARCHAR(80),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  CHECK (user_id IS NOT NULL OR anonymous_id IS NOT NULL)
+);
+
+CREATE TABLE post_comments (
+  id BIGSERIAL PRIMARY KEY,
+  post_id BIGINT NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+  user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  body TEXT NOT NULL,
+  rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

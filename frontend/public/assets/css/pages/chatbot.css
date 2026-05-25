@@ -1,0 +1,305 @@
+.aiforge-chatbot-root {
+  position: fixed;
+  right: clamp(20px, 4vw, 58px);
+  bottom: clamp(92px, 7vw, 112px);
+  z-index: 99999;
+  pointer-events: none;
+  font-family: "Satoshi Variable", "Plus Jakarta Sans", Arial, sans-serif;
+}
+
+.aiforge-chatbot-root.is-open {
+  bottom: clamp(22px, 5vw, 64px);
+}
+
+.cinema-bot-toggle,
+.cinema-bot-panel {
+  pointer-events: auto;
+}
+
+.cinema-bot-toggle {
+  width: 54px;
+  height: 54px;
+  border: 0;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #effb53;
+  color: #111;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.cinema-bot-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.42);
+}
+
+.cinema-bot-toggle-icon {
+  width: 21px;
+  height: 15px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.cinema-bot-toggle-icon span {
+  height: 2px;
+  border-radius: 999px;
+  background: #111;
+}
+
+.cinema-bot-toggle-icon span:first-child {
+  width: 21px;
+}
+
+.cinema-bot-toggle-icon span:last-child {
+  width: 12px;
+}
+
+.cinema-bot-panel {
+  width: min(360px, calc(100vw - 32px));
+  height: min(640px, calc(100vh - 88px));
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f1f1f2;
+  color: #111;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.46);
+}
+
+.cinema-bot-header {
+  min-height: 78px;
+  padding: 22px 26px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cinema-bot-brand {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 10px;
+  color: #050505;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.cinema-bot-brand-icon,
+.cinema-bot-avatar {
+  width: 44px;
+  height: 34px;
+  border-radius: 0;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  background: transparent;
+}
+
+.cinema-bot-brand-icon img,
+.cinema-bot-avatar img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+}
+
+.cinema-bot-close {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  background: transparent;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.cinema-bot-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.cinema-bot-messages {
+  flex: 1;
+  min-height: 0;
+  padding: 8px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a5a5a5 transparent;
+}
+
+.cinema-bot-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.cinema-bot-message.is-user {
+  justify-content: flex-end;
+}
+
+.cinema-bot-message.is-assistant {
+  justify-content: flex-start;
+}
+
+.cinema-bot-bubble {
+  max-width: 84%;
+  border-radius: 22px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.cinema-bot-message.is-user .cinema-bot-bubble {
+  border-bottom-right-radius: 8px;
+  background: #effb53;
+  color: #111;
+}
+
+.cinema-bot-message.is-assistant .cinema-bot-bubble {
+  border-bottom-left-radius: 8px;
+  background: #111;
+  color: #fff;
+}
+
+.cinema-bot-message.is-error .cinema-bot-bubble {
+  background: #777;
+}
+
+.cinema-bot-avatar {
+  width: 30px;
+  height: 24px;
+  margin-bottom: 2px;
+}
+
+.cinema-bot-avatar img {
+  width: 100%;
+}
+
+.cinema-bot-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cinema-bot-typing span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  animation: cinema-bot-pulse 900ms ease-in-out infinite;
+}
+
+.cinema-bot-typing span:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.cinema-bot-typing span:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.cinema-bot-form {
+  margin: 0 18px 20px;
+  min-height: 54px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px 7px 18px;
+  background: #111;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.14);
+}
+
+.cinema-bot-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  caret-color: #effb53;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cinema-bot-input::placeholder {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.cinema-bot-send {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.cinema-bot-send {
+  border: 2px solid #bd61ff;
+  color: #bd61ff;
+  background: #fbfbfb;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, opacity 160ms ease;
+}
+
+.cinema-bot-send:hover {
+  color: #fff;
+  background: #bd61ff;
+}
+
+.cinema-bot-send:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@keyframes cinema-bot-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 575px) {
+  .aiforge-chatbot-root {
+    right: 16px;
+    bottom: 86px;
+  }
+
+  .aiforge-chatbot-root.is-open {
+    bottom: 18px;
+  }
+
+  .cinema-bot-panel {
+    width: calc(100vw - 24px);
+    height: min(620px, calc(100vh - 42px));
+    border-radius: 26px;
+  }
+}

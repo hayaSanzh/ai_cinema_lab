@@ -1,0 +1,26 @@
+.quiz-btn.selected {
+  background-color: #d4ff00 !important;
+  color: #000 !important;
+  box-shadow: 0 0 15px rgba(212, 255, 0, 0.6);
+}
+
+.quiz-media {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.quiz-feedback {
+  min-height: 28px;
+  margin: 18px 0 0;
+  color: #cfd0d4;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.quiz-feedback.is-error {
+  color: #ff6b6b;
+}
+
+.quiz-feedback.is-info {
+  color: #cfd0d4;
+}
