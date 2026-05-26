@@ -1049,17 +1049,163 @@ button {
     margin-bottom: 28px;
   }
 
+  .app-shell .legacy-page .about-section {
+    padding-top: 124px;
+  }
+
+  .app-shell .legacy-page .about-section .container {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 18px;
+    padding-left: 18px;
+    overflow: hidden;
+  }
+
+  .app-shell .legacy-page .about-section .section-title,
+  .app-shell .legacy-page .about-section .section-title.ml-200 {
+    max-width: 100%;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    text-align: left;
+  }
+
+  .app-shell .legacy-page .about-section .section-title h6 {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .app-shell .legacy-page .about-section .section-title h2 {
+    width: min(100%, calc(100vw - 36px));
+    max-width: calc(100vw - 36px);
+    margin-right: 0;
+    margin-left: 0;
+    text-align: left;
+    font-size: clamp(22px, 5.9vw, 26px) !important;
+    line-height: 1.16;
+    white-space: normal !important;
+    overflow-wrap: break-word;
+  }
+
+  .app-shell .legacy-page .about-section .section-title h2 br {
+    display: none;
+  }
+
+  .app-shell .legacy-page .about-section .section-title h2 span,
+  .app-shell .legacy-page .about-section .section-title h2 b {
+    display: inline;
+    white-space: normal !important;
+  }
+
+  .app-shell .legacy-page .about-section .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .app-shell .legacy-page .about-section .row > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .app-shell .legacy-page .about-section .about-image-33 {
+    margin-bottom: 26px;
+  }
+
+  .app-shell .legacy-page .about-section .about-image-33 img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
   .legacy-page .about-content {
     padding-left: 0;
+  }
+
+  .app-shell .legacy-page .about-section .about-content p {
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper {
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 36px 0 0 !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+    gap: 22px !important;
+    transform: none !important;
   }
 
   .legacy-page .about-wrapper .nav {
     gap: 10px;
   }
 
+  .app-shell .legacy-page .about-section .about-wrapper .nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    border-right: 0 !important;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper .nav .nav-item {
+    width: 100%;
+  }
+
   .legacy-page .about-wrapper .nav .nav-link {
     padding: 12px 16px;
     font-size: 14px;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper .nav .nav-link {
+    width: 100% !important;
+    min-height: 58px !important;
+    height: auto !important;
+    padding: 14px 18px !important;
+    border-radius: 22px !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    white-space: normal;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper .tab-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    flex: 0 0 auto !important;
+    transform: none !important;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper .about-items {
+    width: 100%;
+    display: block !important;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper .about-content {
+    width: 100%;
+    max-width: 100% !important;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper .list-items {
+    margin-bottom: 0 !important;
+    padding-left: 0;
+  }
+
+  .app-shell .legacy-page .about-section .about-wrapper .list-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   .service-box-items {
@@ -1108,6 +1254,10 @@ button {
 
   .header-main {
     min-height: 86px;
+  }
+
+  .header-1 .header-right > .language-switcher {
+    display: none;
   }
 
   .login-wrapper {
