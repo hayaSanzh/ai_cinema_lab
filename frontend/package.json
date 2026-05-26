@@ -1,0 +1,14 @@
+{
+  "name": "aiforge-static-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-static.mjs",
+    "serve": "python3 -m http.server 8000 --directory public",
+    "serve:dist": "python3 -m http.server 8080 --directory dist"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

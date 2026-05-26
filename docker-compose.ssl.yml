@@ -1,0 +1,8 @@
+services:
+  frontend:
+    ports:
+      - "${FRONTEND_HTTPS_PORT:-8443}:443"
+    volumes:
+      - ./deploy/nginx/frontend-ssl.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./deploy/nginx/aiforge-locations.conf:/etc/nginx/includes/aiforge-locations.conf:ro
+      - ./deploy/certs:/etc/nginx/certs:ro

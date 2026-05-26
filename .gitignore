@@ -25,6 +25,7 @@ frontend/build/
 backend/uploads/*
 !backend/uploads/.gitignore
 backend/uploads-test/
+deploy/certs/
 uploads/
 tmp/
 temp/

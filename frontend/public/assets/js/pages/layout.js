@@ -29,6 +29,8 @@
     "between reality and simulation in modern film.",
   ].join(" ");
 
+  window.AIFORGE_API_URL = window.AIFORGE_API_URL || getDefaultApiBaseUrl();
+
   window.AIForgeLayout = {
     render: renderLayout,
     mountChatbot,
@@ -81,11 +83,11 @@
   }
 
   function renderPreloader() {
-    const letters = "AIFORGE"
+    const letters = "AI Cinema Lab"
       .split("")
       .map(
         (letter) =>
-          `<span data-text-preloader="${letter}" class="letters-loading">${letter}</span>`,
+          `<span data-text-preloader="${letter}" class="letters-loading">${letter === " " ? "&nbsp;" : letter}</span>`,
       )
       .join("");
 
@@ -279,5 +281,11 @@
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
     return currentPage === href;
+  }
+
+  function getDefaultApiBaseUrl() {
+    const isLocalhost = ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
+
+    return isLocalhost ? "http://localhost:3000/api" : "/api";
   }
 })();

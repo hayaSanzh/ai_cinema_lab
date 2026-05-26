@@ -54,4 +54,8 @@ export class SendChatbotMessageDto {
   @ValidateNested()
   @Type(() => ChatbotPageContextDto)
   page?: ChatbotPageContextDto;
+
+  @IsOptional()
+  @IsIn(['en', 'kk', 'ru'])
+  language?: 'en' | 'kk' | 'ru';
 }

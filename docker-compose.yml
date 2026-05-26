@@ -3,19 +3,72 @@ services:
     image: postgres:16-alpine
     container_name: aiforge-postgres
     environment:
-      POSTGRES_DB: aiforge
-      POSTGRES_USER: aiforge
-      POSTGRES_PASSWORD: aiforge_password
+      POSTGRES_DB: ${POSTGRES_DB:-aiforge}
+      POSTGRES_USER: ${POSTGRES_USER:-aiforge}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aiforge_password}
     ports:
-      - "55432:5432"
+      - "${POSTGRES_PORT:-55432}:5432"
     volumes:
       - aiforge-postgres-data:/var/lib/postgresql/data
       - ./backend/prisma/docker:/docker-entrypoint-initdb.d:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U aiforge -d aiforge"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-aiforge} -d ${POSTGRES_DB:-aiforge}"]
       interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: aiforge-backend
+    env_file:
+      - path: ./backend/.env
+        required: false
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      APP_URL: ${APP_URL:-http://localhost:8080}
+      API_URL: ${API_URL:-http://localhost:3000}
+      BACKEND_PUBLIC_URL: ${BACKEND_PUBLIC_URL:-http://localhost:3000}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:8080,http://localhost:8000,http://localhost:5173}
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB:-aiforge}
+      DB_USER: ${POSTGRES_USER:-aiforge}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-aiforge_password}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-aiforge}:${POSTGRES_PASSWORD:-aiforge_password}@postgres:5432/${POSTGRES_DB:-aiforge}?schema=public
+      UPLOADS_DIR: /app/uploads
+      RUN_MIGRATIONS: ${RUN_MIGRATIONS:-true}
+    ports:
+      - "${BACKEND_PORT:-3000}:3000"
+    volumes:
+      - aiforge-uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: aiforge-frontend
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null || exit 1"]
+      interval: 10s
       timeout: 5s
       retries: 10
 
 volumes:
   aiforge-postgres-data:
+  aiforge-uploads:
