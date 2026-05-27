@@ -592,6 +592,17 @@ button {
   color: #fff !important;
 }
 
+.legacy-page .project-wrapper .project-title img {
+  margin-left: 0 !important;
+  margin-right: clamp(12px, 2vw, 28px);
+  vertical-align: middle;
+}
+
+.legacy-page .project-wrapper .project-title span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 @media (min-width: 768px) {
   .legacy-page .service-section .service-box-items {
     align-items: stretch;
