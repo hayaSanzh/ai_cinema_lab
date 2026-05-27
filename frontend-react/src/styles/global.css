@@ -45,21 +45,30 @@ button {
 }
 
 .header-1 .header-right {
+  display: inline-flex;
+  align-items: center;
   gap: 24px;
 }
 
 .header-main .sidebar__toggle {
+  width: 44px;
+  height: 44px;
   border: 0;
   padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: inherit;
   background: transparent;
-  line-height: 1;
+  line-height: 0;
 }
 
 .header-menu-bars {
   width: 20px;
   height: 16px;
-  display: inline-flex;
+  margin: 0;
+  display: flex;
+  flex: 0 0 auto;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -70,6 +79,14 @@ button {
   border-radius: 999px;
   display: block;
   background: #d4ff00;
+}
+
+.header__hamburger,
+.header__hamburger.d-xl-block {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
 }
 
 .offcanvas__overlay {
