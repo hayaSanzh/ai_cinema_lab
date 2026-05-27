@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { ForgotPasswordPage } from '../pages/auth/ForgotPasswordPage';
+import { GoogleOAuthCallbackPage } from '../pages/auth/GoogleOAuthCallbackPage';
 import { LoginPage } from '../pages/auth/LoginPage';
 import { RegisterPage } from '../pages/auth/RegisterPage';
 import { ResetPasswordPage } from '../pages/auth/ResetPasswordPage';
@@ -20,6 +21,7 @@ export function App() {
         <Route index element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/auth/google/callback" element={<GoogleOAuthCallbackPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/profile" element={<ProfilePage />} />

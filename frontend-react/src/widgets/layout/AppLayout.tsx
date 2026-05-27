@@ -13,7 +13,9 @@ export function AppLayout() {
   const location = useLocation();
   const { i18n, t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const shouldShowChatbot = !['/login', '/register', '/forgot-password', '/reset-password'].includes(location.pathname);
+  const shouldShowChatbot = !['/login', '/register', '/auth/google/callback', '/forgot-password', '/reset-password'].includes(
+    location.pathname,
+  );
 
   useEffect(() => {
     document.body.classList.add('body-bg');

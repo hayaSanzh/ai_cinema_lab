@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Query, Redirect } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { LoginDto } from './dto/login.dto';
@@ -19,6 +19,37 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   login(@Body() dto: LoginDto): Promise<AuthResponse> {
     return this.authService.login(dto);
+  }
+
+  @Get('google/start')
+  @Redirect()
+  googleStart(
+    @Query('returnTo') returnTo?: string,
+    @Query('rememberMe') rememberMe?: string,
+  ): { url: string } {
+    try {
+      return {
+        url: this.authService.buildGoogleOAuthStartUrl({
+          returnTo,
+          rememberMe: rememberMe === 'true' || rememberMe === '1',
+        }),
+      };
+    } catch (error) {
+      return {
+        url: this.authService.buildGoogleOAuthErrorUrl(error),
+      };
+    }
+  }
+
+  @Get('google/callback')
+  @Redirect()
+  async googleCallback(
+    @Query('code') code?: string,
+    @Query('state') state?: string,
+  ): Promise<{ url: string }> {
+    return {
+      url: await this.authService.loginWithGoogleCallback({ code, state }),
+    };
   }
 
   @Post('forgot-password')

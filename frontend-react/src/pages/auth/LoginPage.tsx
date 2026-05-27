@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { loginUser } from '../../shared/api/auth';
+import { getGoogleAuthStartUrl, loginUser } from '../../shared/api/auth';
 import { useAuth } from '../../shared/auth/useAuth';
 
 type Feedback = {
@@ -12,8 +12,10 @@ type Feedback = {
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
   const { signIn } = useAuth();
+  const returnTo = getSafeReturnTo(new URLSearchParams(location.search).get('returnTo'));
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -35,7 +37,7 @@ export function LoginPage() {
 
       signIn(response.accessToken, response.user, rememberMe);
       setFeedback({ message: t('auth.login.success'), type: 'success' });
-      navigate('/');
+      navigate(returnTo);
     } catch (error) {
       setFeedback({ message: error instanceof Error ? error.message : t('auth.login.error'), type: 'error' });
     } finally {
@@ -62,14 +64,12 @@ export function LoginPage() {
                       <p>{t('auth.login.subtitle')}</p>
                     </div>
                     <div className="social-icon">
-                      <a href="#">
+                      <a
+                        href={getGoogleAuthStartUrl(returnTo, rememberMe)}
+                        className="google-auth-button"
+                        onClick={() => setFeedback({ message: t('auth.google.redirecting'), type: 'info' })}
+                      >
                         <i className="fa-brands fa-google" /> {t('auth.login.google')}
-                      </a>
-                      <a href="#">
-                        <i className="fa-brands fa-apple" />
-                      </a>
-                      <a href="#">
-                        <i className="fa-brands fa-facebook" />
                       </a>
                     </div>
                     <h5>{t('auth.login.emailDivider')}</h5>
@@ -149,4 +149,12 @@ export function LoginPage() {
       </div>
     </section>
   );
+}
+
+function getSafeReturnTo(returnTo: string | null): string {
+  if (!returnTo || !returnTo.startsWith('/') || returnTo.startsWith('//') || returnTo.includes('\\') || returnTo.includes('://')) {
+    return '/';
+  }
+
+  return returnTo;
 }

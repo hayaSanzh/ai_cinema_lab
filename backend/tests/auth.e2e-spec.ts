@@ -161,6 +161,92 @@ describe('Auth register/login (e2e)', () => {
     expect(Number(payload.exp) - Number(payload.iat)).toBeGreaterThan(60 * 60 * 24 * 20);
   });
 
+  it('signs in with Google OAuth and returns the app session in the callback URL', async () => {
+    const previousEnv = {
+      appUrl: process.env.APP_URL,
+      apiUrl: process.env.API_URL,
+      backendPublicUrl: process.env.BACKEND_PUBLIC_URL,
+      googleClientId: process.env.GOOGLE_CLIENT_ID,
+      googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      googleRedirectUri: process.env.GOOGLE_OAUTH_REDIRECT_URI,
+    };
+    const originalFetch = global.fetch;
+
+    process.env.APP_URL = 'http://localhost:5173';
+    process.env.BACKEND_PUBLIC_URL = 'http://localhost:3000';
+    process.env.GOOGLE_CLIENT_ID = 'google-client-id';
+    process.env.GOOGLE_CLIENT_SECRET = 'google-client-secret';
+    delete process.env.GOOGLE_OAUTH_REDIRECT_URI;
+    global.fetch = jest.fn(async (url, init) => {
+      if (String(url) === 'https://oauth2.googleapis.com/token') {
+        expect(String(init?.body)).toContain('code=google-code');
+        expect(String(init?.body)).toContain('client_id=google-client-id');
+        expect(String(init?.body)).toContain('redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fgoogle%2Fcallback');
+
+        return jsonResponse({ access_token: 'google-access-token' });
+      }
+
+      if (String(url) === 'https://www.googleapis.com/oauth2/v3/userinfo') {
+        expect((init?.headers as Record<string, string>).Authorization).toBe('Bearer google-access-token');
+
+        return jsonResponse({
+          email: 'Ainissa.Google@example.com',
+          email_verified: true,
+          name: 'Ainissa Google',
+        });
+      }
+
+      return jsonResponse({ error: 'Unexpected URL' }, 500);
+    }) as typeof fetch;
+
+    try {
+      const startResponse = await request(app.getHttpServer())
+        .get('/api/auth/google/start?returnTo=%2Fdocumentary&rememberMe=true')
+        .expect(302);
+      const googleUrl = new URL(startResponse.headers.location);
+      const state = googleUrl.searchParams.get('state');
+
+      expect(googleUrl.origin).toBe('https://accounts.google.com');
+      expect(googleUrl.pathname).toBe('/o/oauth2/v2/auth');
+      expect(googleUrl.searchParams.get('client_id')).toBe('google-client-id');
+      expect(googleUrl.searchParams.get('redirect_uri')).toBe(
+        'http://localhost:3000/api/auth/google/callback',
+      );
+      expect(googleUrl.searchParams.get('scope')).toBe('openid email profile');
+      expect(state).toEqual(expect.any(String));
+
+      const callbackResponse = await request(app.getHttpServer())
+        .get(`/api/auth/google/callback?code=google-code&state=${encodeURIComponent(state!)}`)
+        .expect(302);
+      const appCallbackUrl = new URL(callbackResponse.headers.location);
+      const callbackParams = new URLSearchParams(appCallbackUrl.hash.replace(/^#/, ''));
+      const user = JSON.parse(
+        Buffer.from(callbackParams.get('user')!, 'base64url').toString('utf8'),
+      ) as Record<string, unknown>;
+
+      expect(appCallbackUrl.origin).toBe('http://localhost:5173');
+      expect(appCallbackUrl.pathname).toBe('/auth/google/callback');
+      expect(callbackParams.get('accessToken')).toEqual(expect.any(String));
+      expect(callbackParams.get('rememberMe')).toBe('1');
+      expect(callbackParams.get('returnTo')).toBe('/documentary');
+      expect(user).toEqual(
+        expect.objectContaining({
+          name: 'Ainissa Google',
+          email: 'ainissa.google@example.com',
+          avatarUrl: null,
+        }),
+      );
+    } finally {
+      global.fetch = originalFetch;
+      restoreEnv('APP_URL', previousEnv.appUrl);
+      restoreEnv('API_URL', previousEnv.apiUrl);
+      restoreEnv('BACKEND_PUBLIC_URL', previousEnv.backendPublicUrl);
+      restoreEnv('GOOGLE_CLIENT_ID', previousEnv.googleClientId);
+      restoreEnv('GOOGLE_CLIENT_SECRET', previousEnv.googleClientSecret);
+      restoreEnv('GOOGLE_OAUTH_REDIRECT_URI', previousEnv.googleRedirectUri);
+    }
+  });
+
   it('sends a password reset link and accepts a new password', async () => {
     await request(app.getHttpServer()).post('/api/auth/register').send(registerPayload).expect(201);
 
@@ -261,4 +347,22 @@ function getResetTokenFromUrl(resetUrl: string): string {
   }
 
   return token;
+}
+
+function jsonResponse(body: unknown, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
+function restoreEnv(key: string, value: string | undefined): void {
+  if (value === undefined) {
+    delete process.env[key];
+    return;
+  }
+
+  process.env[key] = value;
 }

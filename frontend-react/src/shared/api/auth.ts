@@ -1,4 +1,5 @@
 import { apiRequest } from './http';
+import { API_BASE_URL } from '../config/env';
 import type { AuthResponse } from '../types/user';
 
 type AuthPayload = {
@@ -33,4 +34,20 @@ export function resetPassword(token: string, password: string) {
     method: 'POST',
     body: JSON.stringify({ token, password }),
   });
+}
+
+export function getGoogleAuthStartUrl(returnTo = '/', rememberMe = false): string {
+  const baseUrl =
+    API_BASE_URL.startsWith('http') || typeof window === 'undefined'
+      ? API_BASE_URL
+      : `${window.location.origin}${API_BASE_URL}`;
+  const url = new URL(`${baseUrl.replace(/\/$/, '')}/auth/google/start`);
+
+  url.searchParams.set('returnTo', returnTo);
+
+  if (rememberMe) {
+    url.searchParams.set('rememberMe', 'true');
+  }
+
+  return url.toString();
 }

@@ -52,6 +52,15 @@ i18n.use(initReactI18next).init({
           name: 'Your Name',
           remember: 'Remember Me',
           forgotLink: 'Forgot password?',
+          google: {
+            redirecting: 'Opening Google sign-in...',
+            processingTitle: 'Connecting Google account',
+            processingText: 'Finishing sign-in...',
+            failedTitle: 'Google sign-in failed',
+            missingResponse: 'Google did not return sign-in data.',
+            error: 'Could not complete Google sign-in.',
+            backToLogin: 'Back to login',
+          },
           login: {
             title: 'Sign in AI Cinema Lab',
             subtitle: 'Choose on following sign in method',
@@ -251,6 +260,15 @@ i18n.use(initReactI18next).init({
           name: 'Атыңыз',
           remember: 'Мені есте сақтау',
           forgotLink: 'Құпиясөзді ұмыттыңыз ба?',
+          google: {
+            redirecting: 'Google арқылы кіру ашылуда...',
+            processingTitle: 'Google аккаунты қосылуда',
+            processingText: 'Кіру аяқталуда...',
+            failedTitle: 'Google арқылы кіру сәтсіз аяқталды',
+            missingResponse: 'Google кіру деректерін қайтармады.',
+            error: 'Google арқылы кіруді аяқтау мүмкін болмады.',
+            backToLogin: 'Кіруге оралу',
+          },
           login: {
             title: 'AI Cinema Lab жүйесіне кіру',
             subtitle: 'Кіру әдісін таңдаңыз',
@@ -450,6 +468,15 @@ i18n.use(initReactI18next).init({
           name: 'Ваше имя',
           remember: 'Запомнить меня',
           forgotLink: 'Забыли пароль?',
+          google: {
+            redirecting: 'Открываем вход через Google...',
+            processingTitle: 'Подключаем Google аккаунт',
+            processingText: 'Завершаем вход...',
+            failedTitle: 'Вход через Google не удался',
+            missingResponse: 'Google не вернул данные для входа.',
+            error: 'Не удалось завершить вход через Google.',
+            backToLogin: 'Назад ко входу',
+          },
           login: {
             title: 'Вход в AI Cinema Lab',
             subtitle: 'Выберите способ входа',

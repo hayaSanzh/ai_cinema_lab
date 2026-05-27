@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { registerUser } from '../../shared/api/auth';
+import { getGoogleAuthStartUrl, registerUser } from '../../shared/api/auth';
 import { useAuth } from '../../shared/auth/useAuth';
 
 type Feedback = {
@@ -12,8 +12,10 @@ type Feedback = {
 
 export function RegisterPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
   const { signIn } = useAuth();
+  const returnTo = getSafeReturnTo(new URLSearchParams(location.search).get('returnTo'));
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,7 +38,7 @@ export function RegisterPage() {
 
       signIn(response.accessToken, response.user, rememberMe);
       setFeedback({ message: t('auth.register.success'), type: 'success' });
-      navigate('/');
+      navigate(returnTo);
     } catch (error) {
       setFeedback({ message: error instanceof Error ? error.message : t('auth.register.error'), type: 'error' });
     } finally {
@@ -63,14 +65,12 @@ export function RegisterPage() {
                       <p>{t('auth.register.subtitle')}</p>
                     </div>
                     <div className="social-icon">
-                      <a href="#">
+                      <a
+                        href={getGoogleAuthStartUrl(returnTo, rememberMe)}
+                        className="google-auth-button"
+                        onClick={() => setFeedback({ message: t('auth.google.redirecting'), type: 'info' })}
+                      >
                         <i className="fa-brands fa-google" /> {t('auth.register.google')}
-                      </a>
-                      <a href="#">
-                        <i className="fa-brands fa-apple" />
-                      </a>
-                      <a href="#">
-                        <i className="fa-brands fa-facebook" />
                       </a>
                     </div>
                     <h5>{t('auth.register.emailDivider')}</h5>
@@ -165,4 +165,12 @@ export function RegisterPage() {
       </div>
     </section>
   );
+}
+
+function getSafeReturnTo(returnTo: string | null): string {
+  if (!returnTo || !returnTo.startsWith('/') || returnTo.startsWith('//') || returnTo.includes('\\') || returnTo.includes('://')) {
+    return '/';
+  }
+
+  return returnTo;
 }
