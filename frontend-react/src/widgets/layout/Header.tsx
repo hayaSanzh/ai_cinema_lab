@@ -32,7 +32,7 @@ export function Header({ onOpenMenu }: HeaderProps) {
             <div className="header-left">
               <div className="logo">
                 <Link to="/" className="header-logo" aria-label="AI Cinema Lab home">
-                  <img className="aitu-logo" src="/assets/img/logo/cinema-bot-icon.svg" alt="Astana IT University logo" />
+                  <img className="site-logo" src="/assets/img/logo/cinema-bot-icon.png" alt="AI Cinema Lab logo" />
                 </Link>
               </div>
               <div className="mean__menu-wrapper">

@@ -83,7 +83,7 @@ function extractLegacyBody(html: string, page: LegacyHtmlPageProps['page'], t: (
   const legacyCopy = getLegacyCopy(language);
 
   documentSnapshot.querySelectorAll(layoutSelectors.join(', ')).forEach((element) => element.remove());
-  normalizeHomeTitle(documentSnapshot, t);
+  normalizeHomeHero(documentSnapshot, page, t);
   applyLegacyTranslations(documentSnapshot, page, t, legacyCopy);
   documentSnapshot.querySelectorAll('[src^="assets/"]').forEach((element) => {
     const source = element.getAttribute('src');
@@ -110,11 +110,25 @@ function extractLegacyBody(html: string, page: LegacyHtmlPageProps['page'], t: (
   return documentSnapshot.body.innerHTML;
 }
 
-function normalizeHomeTitle(documentSnapshot: Document, t: (key: string) => string) {
+function normalizeHomeHero(documentSnapshot: Document, page: LegacyHtmlPageProps['page'], t: (key: string) => string) {
+  if (page !== 'home') {
+    return;
+  }
+
+  const heroContent = documentSnapshot.querySelector('.hero-secton.hero-1 .hero-content');
+  const heroText = heroContent?.querySelector('p');
   const title = documentSnapshot.querySelector('.hero-secton.hero-1 .hero-content h1');
 
-  if (!title) {
+  if (!heroContent || !title) {
     return;
+  }
+
+  if (!heroContent.querySelector('.home-aitu-logo')) {
+    const aituLogo = documentSnapshot.createElement('img');
+    aituLogo.setAttribute('src', 'assets/img/logo/aitu-logo-white-2-300x154.png');
+    aituLogo.setAttribute('alt', 'Astana IT University');
+    aituLogo.className = 'home-aitu-logo';
+    heroContent.insertBefore(aituLogo, heroText ?? title);
   }
 
   title.className = 'react-home-title';

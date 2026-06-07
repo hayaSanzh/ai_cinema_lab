@@ -196,8 +196,8 @@ i18n.use(initReactI18next).init({
         legacy: {
           home: {
             title: 'AI Cinema Lab',
-            heroText: 'Exploring how AI reshapes performance, authenticity and audience perception',
-            titleMain: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
+            heroText: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
+            titleMain: 'AI Cinema Lab',
             titleSub: '',
             aboutEyebrow: 'About the Project',
             aboutTitle: 'How Artificial Intelligence <br><span>Transforms <b>Cinema and Perception</b></span>',
@@ -405,8 +405,8 @@ i18n.use(initReactI18next).init({
         legacy: {
           home: {
             title: 'AI Cinema Lab',
-            heroText: 'AI перформансты, шынайылықты және көрермен қабылдауын қалай өзгертетінін зерттеу',
-            titleMain: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
+            heroText: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
+            titleMain: 'AI Cinema Lab',
             titleSub: '',
             aboutEyebrow: 'Жоба туралы',
             aboutTitle: 'Жасанды интеллект <br><span><b>кино мен қабылдауды</b> қалай өзгертеді</span>',
@@ -614,8 +614,8 @@ i18n.use(initReactI18next).init({
         legacy: {
           home: {
             title: 'AI Cinema Lab',
-            heroText: 'Исследуем, как AI меняет перформанс, подлинность и восприятие аудитории',
-            titleMain: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
+            heroText: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
+            titleMain: 'AI Cinema Lab',
             titleSub: '',
             aboutEyebrow: 'О проекте',
             aboutTitle: 'Как искусственный интеллект <br><span>трансформирует <b>кино и восприятие</b></span>',

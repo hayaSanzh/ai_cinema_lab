@@ -56,7 +56,7 @@ export function RegisterPage() {
                 <div className="col-xl-6">
                   <div className="sign-img" style={{ height: '100%' }}>
                     <img
-                      src="/assets/img/login.webp"
+                      src="/assets/img/ethics-authenticity.jpg"
                       alt="Register visual"
                       style={{
                         width: '100%',
