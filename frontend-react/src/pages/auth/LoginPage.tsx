@@ -54,7 +54,7 @@ export function LoginPage() {
               <div className="row">
                 <div className="col-xl-6">
                   <div className="sign-img">
-                    <img src="/assets/img/sign-image.jpg" alt="Sign in visual" />
+                    <img src="/assets/img/login.webp" alt="Sign in visual" style={{ objectFit: "cover", objectPosition: "center" }} />
                   </div>
                 </div>
                 <div className="col-xl-6">
