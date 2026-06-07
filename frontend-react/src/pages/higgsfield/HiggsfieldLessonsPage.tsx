@@ -54,76 +54,48 @@ In this lesson, you will learn how to turn a generated image into a video using 
 
 Step 1. Prepare Your Image
 
-Before creating a video, make sure you have already generated and downloaded an image.
-
-Download the image created in the previous lesson.
-Save it to your device for use as the source image.
+Before creating a video, make sure you have already generated and downloaded an image. Download the image created in the previous lesson. Save it to your device for use as the source image.
 
 Step 2. Open the Create Video Section
 
-Open Higgsfield.
-Navigate to the Create Video section.
+Open Higgsfield. Navigate to the Create Video section.
 
 Step 3. Upload Your Image
 
-Upload the image you generated earlier.
-Wait for the image to load completely before proceeding.
+Upload the image you generated earlier. Wait for the image to load completely before proceeding.
 
 Step 4. Choose a Video Generation Model
 
-Higgsfield offers several video generation models.
-
-For this tutorial, we will use Kling 3.0.
-
-Alternative option:
-
-Kling 2.5 Turbo is also available.
-This model is a good choice for beginners because it is more affordable while still delivering solid results.
-
-Feel free to experiment with different models depending on your project requirements and available credits.
+Higgsfield offers several video generation models. For this tutorial, we will use Kling 3.0. Alternative option Kling 2.5 Turbo is also available. This model is a good choice for beginners because it is more affordable while still delivering solid results. Feel free to experiment with different models depending on your project requirements and available credits.
 
 Step 5. Create a Video Prompt
 
-Open ChatGPT.
-Generate a video prompt based on the image and desired motion.
-Copy the video prompt.
+Open ChatGPT. Generate a video prompt based on the image and desired motion. Copy the video prompt.
 
 Step 6. Add the Prompt
 
-Return to Higgsfield.
-Paste the video prompt into the prompt field.
+Return to Higgsfield. Paste the video prompt into the prompt field.
 
 Step 7. Select the Resolution
 
 Higgsfield provides different output resolutions.
-
 Available options may include:
-
-720p
-1080p
+- 720p
+- 1080p
 
 For beginners, 720p is recommended because:
-
-It requires fewer credits.
-The generation process is generally faster and more stable.
-It helps avoid common generation issues that may occur when using higher resolutions.
-
+- It requires fewer credits.
+- The generation process is generally faster and more stable.
+- It helps avoid common generation issues that may occur when using higher resolutions.
 For this example, select 720p.
 
 Step 8. Generate the Video
 
-Review your settings.
-Click Generate to start the video creation process.
-Wait for the generation to complete.
+Review your settings. Click Generate to start the video creation process. Wait for the generation to complete.
 
 Step 9. Review and Download
 
-Once the video is ready:
-
-Preview the generated result.
-If you are satisfied with the outcome, click Download to save the video to your device.
-
-You have now successfully created a video in Higgsfield using an AI-generated image and a motion prompt.`,
+Once the video is ready. Preview the generated result. If you are satisfied with the outcome, click Download to save the video to your device. You have now successfully created a video in Higgsfield using an AI-generated image and a motion prompt.`,
   },
 ];
 
@@ -164,9 +136,9 @@ function renderLessonText(text: string) {
       return <span className="higgsfield-break" key={index} aria-hidden="true" />;
     }
 
-    const isLessonOne = line.startsWith('Lesson 1.');
+    const isLesson = /^Lesson \d+\./.test(line);
     const isStep = /^Step \d+\./.test(line);
-    const className = isLessonOne || isStep ? 'higgsfield-text-highlight' : undefined;
+    const className = isLesson || isStep ? 'higgsfield-text-highlight' : undefined;
 
     return (
       <span className={className} key={index}>
