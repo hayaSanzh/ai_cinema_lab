@@ -8197,10 +8197,15 @@ input.main-search-input::placeholder {
 .portfolio-card-items .portfolio-image {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  background: #111;
 }
 .portfolio-card-items .portfolio-image img {
+  display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 20px;
 }
 .portfolio-card-items .portfolio-image .lets-circle {
