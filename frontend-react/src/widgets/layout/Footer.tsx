@@ -12,7 +12,7 @@ export function Footer() {
             <div className="logo-img wow fadeInUp mb-3" data-wow-delay=".3s">
               <Link to="/">
                 <img
-                  src="/assets/img/logo/cinema-bot-icon.png"
+                  src="/assets/img/logo/cinema-bot-icon.svg"
                   alt="AI Cinema Lab logo"
                   className="footer-logo site-logo"
                 />

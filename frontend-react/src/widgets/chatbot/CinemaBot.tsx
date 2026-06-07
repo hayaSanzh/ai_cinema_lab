@@ -125,7 +125,7 @@ export function CinemaBot() {
         <header className="cinema-bot-header">
           <div className="cinema-bot-brand">
             <span className="cinema-bot-brand-icon">
-              <img src="/assets/img/logo/cinema-bot-icon.png" alt="" />
+              <img src="/assets/img/logo/cinema-bot-icon.svg" alt="" />
             </span>
             <strong>{t('chatbot.title')}</strong>
           </div>
@@ -142,7 +142,7 @@ export function CinemaBot() {
             >
               {message.role === 'assistant' ? (
                 <span className="cinema-bot-avatar">
-                  <img src="/assets/img/logo/cinema-bot-icon.png" alt="" />
+                  <img src="/assets/img/logo/cinema-bot-icon.svg" alt="" />
                 </span>
               ) : null}
               <p className="cinema-bot-bubble">
