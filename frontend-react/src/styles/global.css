@@ -45,7 +45,7 @@ button {
   height: auto;
   padding: 6px 10px;
   display: block;
-  background: #ffffff;
+  background: #050506;
   border-radius: 8px;
   object-fit: contain;
 }
@@ -395,6 +395,7 @@ button {
 }
 
 .legacy-page .hero-secton.hero-1 .hero-content {
+  top: 43%;
   left: 50%;
   width: min(1200px, calc(100vw - 40px));
   text-align: center;
@@ -413,6 +414,14 @@ button {
   margin-right: auto;
   margin-left: auto;
   white-space: normal;
+}
+
+.legacy-page .home-hero-eyebrow-line {
+  display: block;
+}
+
+.legacy-page .home-hero-eyebrow-line-rest {
+  margin-top: 3px;
 }
 
 .legacy-page .hero-1 .hero-content h1 b {
@@ -450,9 +459,9 @@ button {
 }
 
 .legacy-page .home-aitu-logo {
-  width: min(300px, 42vw);
+  width: min(230px, 34vw);
   height: auto;
-  margin: 0 auto 28px;
+  margin: 0 auto 20px;
   display: block;
   object-fit: contain;
 }
@@ -883,7 +892,7 @@ button {
   }
 
   .legacy-page .hero-secton.hero-1 .hero-content {
-    top: 48%;
+    top: 44%;
     width: min(100% - 28px, 560px);
   }
 
@@ -903,8 +912,8 @@ button {
   }
 
   .legacy-page .home-aitu-logo {
-    width: min(240px, 62vw);
-    margin-bottom: 20px;
+    width: min(190px, 58vw);
+    margin-bottom: 16px;
   }
 
   .hero-3 {

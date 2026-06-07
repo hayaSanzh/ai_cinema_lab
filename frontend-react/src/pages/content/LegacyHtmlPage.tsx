@@ -135,9 +135,35 @@ function normalizeHomeHero(documentSnapshot: Document, page: LegacyHtmlPageProps
   const titleSub = t('legacy.home.titleSub');
 
   title.innerHTML = [
-    `<span class="react-home-title-main">${t('legacy.home.titleMain')}</span>`,
-    titleSub ? `<span class="react-home-title-sub">${titleSub}</span>` : '',
+    `<span class="react-home-title-main">${formatHomeTitleMain(t('legacy.home.titleMain'))}</span>`,
+    titleSub ? `<span class="react-home-title-sub">${escapeHtml(titleSub)}</span>` : '',
   ].join('');
+}
+
+function formatHomeTitleMain(value: string) {
+  return escapeHtml(value).replace(/^AI(\s+)/, `<span class="highlight">AI</span>$1`);
+}
+
+function formatHomeHeroText(value: string) {
+  const [lead, ...restParts] = value.split(':');
+
+  if (!lead || restParts.length === 0) {
+    return escapeHtml(value);
+  }
+
+  return [
+    `<span class="home-hero-eyebrow-line">${escapeHtml(lead.trim())}:</span>`,
+    `<span class="home-hero-eyebrow-line home-hero-eyebrow-line-rest">${escapeHtml(restParts.join(':').trim())}</span>`,
+  ].join('');
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 function applyLegacyTranslations(
@@ -218,8 +244,12 @@ function applyLegacyTranslations(
 
   if (page === 'home') {
     const homeCopy = legacyCopy.home;
+    const heroText = documentSnapshot.querySelector('.hero-secton.hero-1 .hero-content p');
 
-    setText('.hero-secton.hero-1 .hero-content p', 'legacy.home.heroText');
+    if (heroText) {
+      heroText.innerHTML = formatHomeHeroText(t('legacy.home.heroText'));
+    }
+
     setEyebrow('.about-section .section-title h6', 'legacy.home.aboutEyebrow');
     setHtml('.about-section .section-title h2', 'legacy.home.aboutTitle');
     setCollectionText('.about-section .about-wrapper > .nav .nav-link', [
