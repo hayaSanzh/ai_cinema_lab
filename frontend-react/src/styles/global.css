@@ -41,17 +41,17 @@ button {
 }
 
 .site-logo {
-  width: 150px;
+  width: 190px;
   height: auto;
-  padding: 6px 10px;
+  padding: 0;
   display: block;
-  background: #050506;
-  border-radius: 8px;
+  background: transparent;
+  border-radius: 0;
   object-fit: contain;
 }
 
 .header-1 .header-logo .site-logo {
-  width: 128px;
+  width: 170px;
   padding: 0;
   background: transparent;
   border-radius: 0;
@@ -1456,7 +1456,7 @@ button {
   }
 
   .footer-logo {
-    width: min(150px, 80vw);
+    width: min(190px, 80vw);
   }
 
   .footer-credit {
