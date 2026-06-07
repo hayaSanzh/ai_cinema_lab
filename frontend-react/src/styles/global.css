@@ -50,6 +50,11 @@ button {
   object-fit: contain;
 }
 
+.header-1 .header-logo .site-logo {
+  width: 88px;
+  padding: 5px 8px;
+}
+
 .header-1 .main-menu ul li a.active {
   color: #d4ff00 !important;
 }
