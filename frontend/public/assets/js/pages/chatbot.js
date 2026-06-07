@@ -7,7 +7,7 @@
 
   const API_BASE_URL = window.AIFORGE_API_URL || "http://localhost:3000/api";
   const STORAGE_KEY = "aiforge.chatbot.messages";
-  const LOGO_SRC = "assets/img/logo/cinema-bot-icon.svg";
+  const LOGO_SRC = "assets/img/logo/cinema-bot-icon.png";
   const MAX_STORED_MESSAGES = 20;
 
   const root = getRoot();

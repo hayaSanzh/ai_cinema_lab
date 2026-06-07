@@ -147,7 +147,7 @@ function Offcanvas({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
               <div className="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                 <div className="offcanvas__logo">
                   <Link to="/" onClick={onClose}>
-                    <img className="site-logo" src="/assets/img/logo/cinema-bot-icon.svg" alt="AI Cinema Lab logo" />
+                    <img className="site-logo" src="/assets/img/logo/cinema-bot-icon.png" alt="AI Cinema Lab logo" />
                   </Link>
                 </div>
                 <div className="offcanvas__close">
