@@ -440,6 +440,15 @@ button {
   animation: react-hero-title-in 1.3s both cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+.legacy-page .hero-secton.hero-1 .hero-content h1.react-home-title {
+  max-width: min(1120px, calc(100vw - 80px));
+  margin-right: auto;
+  margin-left: auto;
+  font-size: clamp(30px, 3.4vw, 54px) !important;
+  line-height: 1.14 !important;
+  text-transform: none !important;
+}
+
 .legacy-page .react-home-title-main,
 .legacy-page .react-home-title-sub {
   display: block;
@@ -826,6 +835,11 @@ button {
 
   .legacy-page .react-home-title {
     font-size: clamp(28px, 8vw, 44px);
+  }
+
+  .legacy-page .hero-secton.hero-1 .hero-content h1.react-home-title {
+    max-width: min(100% - 24px, 620px);
+    font-size: clamp(26px, 7vw, 36px) !important;
   }
 
   .hero-3 {
@@ -1361,6 +1375,12 @@ button {
 
   .legacy-page .react-home-title {
     font-size: 30px;
+  }
+
+  .legacy-page .hero-secton.hero-1 .hero-content h1.react-home-title {
+    max-width: calc(100vw - 44px);
+    font-size: 26px !important;
+    line-height: 1.18 !important;
   }
 
   .header-1 .container-fluid {
