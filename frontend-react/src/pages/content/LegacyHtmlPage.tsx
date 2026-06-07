@@ -118,9 +118,11 @@ function normalizeHomeTitle(documentSnapshot: Document, t: (key: string) => stri
   }
 
   title.className = 'react-home-title';
+  const titleSub = t('legacy.home.titleSub');
+
   title.innerHTML = [
-    `<span class="react-home-title-main"><span class="highlight">${t('legacy.home.titleMain').split(' ')[0]}</span> ${t('legacy.home.titleMain').split(' ').slice(1).join(' ')}</span>`,
-    `<span class="react-home-title-sub">${t('legacy.home.titleSub')}</span>`,
+    `<span class="react-home-title-main">${t('legacy.home.titleMain')}</span>`,
+    titleSub ? `<span class="react-home-title-sub">${titleSub}</span>` : '',
   ].join('');
 }
 
