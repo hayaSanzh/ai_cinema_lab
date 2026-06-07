@@ -8,6 +8,7 @@ import { AboutPage } from '../pages/content/AboutPage';
 import { CasesPage } from '../pages/content/CasesPage';
 import { HomePage } from '../pages/content/HomePage';
 import { DocumentaryPage } from '../pages/documentary/DocumentaryPage';
+import { HiggsfieldLessonsPage } from '../pages/higgsfield/HiggsfieldLessonsPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ProfilePage } from '../pages/profile/ProfilePage';
 import { QuizPage } from '../pages/quiz/QuizPage';
@@ -28,6 +29,7 @@ export function App() {
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/result" element={<ResultPage />} />
         <Route path="/documentary" element={<DocumentaryPage />} />
+        <Route path="/higgsfield" element={<HiggsfieldLessonsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cases" element={<CasesPage />} />
         <Route path="*" element={<NotFoundPage />} />
