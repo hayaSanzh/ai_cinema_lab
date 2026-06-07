@@ -41,7 +41,7 @@ button {
 }
 
 .site-logo {
-  width: 190px;
+  width: 210px;
   height: auto;
   padding: 0;
   display: block;
@@ -51,7 +51,7 @@ button {
 }
 
 .header-1 .header-logo .site-logo {
-  width: 170px;
+  width: 190px;
   padding: 0;
   background: transparent;
   border-radius: 0;
@@ -1456,7 +1456,7 @@ button {
   }
 
   .footer-logo {
-    width: min(190px, 80vw);
+    width: min(210px, 80vw);
   }
 
   .footer-credit {
