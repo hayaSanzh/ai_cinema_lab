@@ -1,6 +1,8 @@
+import { useEffect, useMemo, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../shared/auth/useAuth';
+import { getInitials } from '../../shared/lib/format';
 import { LanguageSwitcher } from '../language/LanguageSwitcher';
 import { navLinks } from './nav-links';
 
@@ -11,6 +13,16 @@ type HeaderProps = {
 export function Header({ onOpenMenu }: HeaderProps) {
   const { session } = useAuth();
   const { t } = useTranslation();
+  const avatarUrl = session?.user.avatarUrl ?? '';
+  const avatarFallback = useMemo(
+    () => getInitials(session?.user.name || session?.user.email || 'AI'),
+    [session?.user.email, session?.user.name],
+  );
+  const [hasAvatarError, setHasAvatarError] = useState(false);
+
+  useEffect(() => {
+    setHasAvatarError(false);
+  }, [avatarUrl]);
 
   return (
     <header id="header-sticky" className="header-1" data-layout-part="header">
@@ -20,7 +32,7 @@ export function Header({ onOpenMenu }: HeaderProps) {
             <div className="header-left">
               <div className="logo">
                 <Link to="/" className="header-logo" aria-label="AI Cinema Lab home">
-                  <img src="/assets/img/logo/white-logo.svg" alt="AI Cinema Lab logo" />
+                  <img className="aitu-logo" src="/assets/img/logo/cinema-bot-icon.svg" alt="Astana IT University logo" />
                 </Link>
               </div>
               <div className="mean__menu-wrapper">
@@ -44,10 +56,10 @@ export function Header({ onOpenMenu }: HeaderProps) {
               {session ? (
                 <Link to="/profile" className="header-profile-link" aria-label={t('nav.profile')}>
                   <span className="header-profile-avatar">
-                    {session.user.avatarUrl ? (
-                      <img src={session.user.avatarUrl} alt={session.user.name ? `${session.user.name} avatar` : 'Profile avatar'} />
+                    {avatarUrl && !hasAvatarError ? (
+                      <img src={avatarUrl} alt="" onError={() => setHasAvatarError(true)} />
                     ) : (
-                      getInitials(session.user.name || session.user.email || 'AI')
+                      avatarFallback
                     )}
                   </span>
                 </Link>
@@ -71,14 +83,4 @@ export function Header({ onOpenMenu }: HeaderProps) {
       </div>
     </header>
   );
-}
-
-function getInitials(value: string) {
-  const parts = value.trim().split(/\s+/).filter(Boolean);
-
-  if (parts.length >= 2) {
-    return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
-  }
-
-  return value.slice(0, 2).toUpperCase();
 }

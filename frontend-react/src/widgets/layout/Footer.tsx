@@ -11,7 +11,11 @@ export function Footer() {
           <div className="footer-bottom-wrapper text-center">
             <div className="logo-img wow fadeInUp mb-3" data-wow-delay=".3s">
               <Link to="/">
-                <img src="/assets/img/logo/white-logo.svg" alt="AI Cinema Lab logo" className="footer-logo" />
+                <img
+                  src="/assets/img/logo/cinema-bot-icon.svg"
+                  alt="Astana IT University logo"
+                  className="footer-logo aitu-logo"
+                />
               </Link>
             </div>
             <p className="wow fadeInUp footer-credit" data-wow-delay=".5s">
