@@ -31,7 +31,7 @@ i18n.use(initReactI18next).init({
         nav: {
           quiz: 'AI/Real Quiz',
           documentary: 'Documentary',
-          higgsfield: 'Higgsfield',
+          higgsfield: 'Learn AI',
           about: 'About Us',
           cases: 'Cases',
           join: 'Join now',
@@ -240,7 +240,7 @@ i18n.use(initReactI18next).init({
         nav: {
           quiz: 'AI/Шынайы квиз',
           documentary: 'Деректі фильм',
-          higgsfield: 'Higgsfield',
+          higgsfield: 'Learn AI',
           about: 'Біз туралы',
           cases: 'Кейстер',
           join: 'Қосылу',
@@ -449,7 +449,7 @@ i18n.use(initReactI18next).init({
         nav: {
           quiz: 'AI/Реальность квиз',
           documentary: 'Документальный фильм',
-          higgsfield: 'Higgsfield',
+          higgsfield: 'Learn AI',
           about: 'О нас',
           cases: 'Кейсы',
           join: 'Присоединиться',

@@ -545,9 +545,21 @@ button {
 .higgsfield-text {
   color: #f4f4f4;
   font-size: clamp(18px, 1.75vw, 24px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.7;
-  white-space: pre-line;
+}
+
+.higgsfield-text span {
+  display: block;
+}
+
+.higgsfield-break {
+  height: 18px;
+}
+
+.higgsfield-text-highlight {
+  color: #effb53;
+  font-weight: 800;
 }
 
 .documentary-like i.fa-solid {

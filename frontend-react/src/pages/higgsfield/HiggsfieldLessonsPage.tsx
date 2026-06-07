@@ -10,46 +10,28 @@ In this lesson, you will learn how to create an image in Higgsfield, from genera
 
 Step 1. Create a Prompt
 
-Before using Higgsfield, you need to prepare a detailed prompt.
-
-Open ChatGPT.
-Describe the image you would like to create.
-Specify that you need both photo and video prompts.
-Once the prompts are generated, copy the photo prompt for use in Higgsfield.
+Before using Higgsfield, you need to prepare a detailed prompt. Open ChatGPT. Describe the image you would like to create. Specify that you need both photo and video prompts. Once the prompts are generated, copy the photo prompt for use in Higgsfield.
 
 Step 2. Open the Create Image Section
 
-Open Higgsfield.
-On the main page, click Create Image.
+Open Higgsfield. On the main page, click Create Image.
 
 Step 3. Add Your Prompt
 
-Paste the photo prompt into the prompt field.
-If needed, upload a reference image to guide the generation process.
+Paste the photo prompt into the prompt field. If needed, upload a reference image to guide the generation process.
 
 Step 4. Choose a Generation Model
 
-Higgsfield offers several image generation models.
-
-You can experiment with different models to find the one that best suits your needs.
-For most projects, Nano Banana Pro is recommended because it provides an excellent balance between quality, performance, and cost.
+Higgsfield offers several image generation models. You can experiment with different models to find the one that best suits your needs. For most projects, Nano Banana Pro is recommended because it provides an excellent balance between quality, performance, and cost.
 
 Step 5. Adjust Image Settings
 
 Before generating the image, configure the desired settings.
-
 Aspect Ratio Options:
-
-16:9 - Landscape format
-9:16 - Portrait format
-1:1 - Square format
-
-For this example, we use 16:9.
-
-You can also adjust additional settings, such as:
-
-Image quality
-Other available generation parameters
+- 16:9 - Landscape format
+- 9:16 - Portrait format
+- 1:1 - Square format
+For this example, we use 16:9. You can also adjust additional settings, such as Image quality and Other available generation parameters.
 
 Step 6. Generate the Image
 
@@ -59,8 +41,7 @@ Step 7. Download the Result
 
 Once the image has been generated:
 
-Review the final result.
-Click Download to save the image to your device.
+Review the final result. Click Download to save the image to your device.
 
 You have now successfully created and downloaded an image using Higgsfield.`,
   },
@@ -148,7 +129,7 @@ You have now successfully created a video in Higgsfield using an AI-generated im
 
 export function HiggsfieldLessonsPage() {
   useEffect(() => {
-    document.title = 'Higgsfield Lessons | AI Cinema Lab';
+    document.title = 'Learn AI | AI Cinema Lab';
   }, []);
 
   return (
@@ -167,7 +148,7 @@ export function HiggsfieldLessonsPage() {
                     allowFullScreen
                   />
                 </div>
-                <div className="higgsfield-text">{lesson.text}</div>
+                <div className="higgsfield-text">{renderLessonText(lesson.text)}</div>
               </article>
             ))}
           </div>
@@ -175,4 +156,22 @@ export function HiggsfieldLessonsPage() {
       </section>
     </main>
   );
+}
+
+function renderLessonText(text: string) {
+  return text.split('\n').map((line, index) => {
+    if (!line.trim()) {
+      return <span className="higgsfield-break" key={index} aria-hidden="true" />;
+    }
+
+    const isLessonOne = line.startsWith('Lesson 1.');
+    const isStep = /^Step \d+\./.test(line);
+    const className = isLessonOne || isStep ? 'higgsfield-text-highlight' : undefined;
+
+    return (
+      <span className={className} key={index}>
+        {line}
+      </span>
+    );
+  });
 }
