@@ -53,8 +53,18 @@ export function LoginPage() {
             <div className="login-wrapper">
               <div className="row">
                 <div className="col-xl-6">
-                  <div className="sign-img">
-                    <img src="/assets/img/login.webp" alt="Sign in visual" style={{ objectFit: "cover", objectPosition: "center" }} />
+                  <div className="sign-img" style={{ height: '100%' }}>
+                    <img
+                      src="/assets/img/login.webp"
+                      alt="Sign in visual"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'block',
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="col-xl-6">
