@@ -449,8 +449,9 @@ button {
   display: block;
   margin-top: 22px;
   color: var(--white);
+  font-family: "Marcellus", serif;
   font-size: clamp(56px, 7vw, 112px);
-  font-weight: 900;
+  font-weight: 400;
   line-height: 1.02;
   text-align: center;
   animation: react-hero-title-in 1.3s both cubic-bezier(0.645, 0.045, 0.355, 1);

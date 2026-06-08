@@ -197,7 +197,7 @@ i18n.use(initReactI18next).init({
           home: {
             title: 'AI Cinema Lab',
             heroText: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
-            titleMain: 'AI Cinema Lab',
+            titleMain: 'AI Cinema LAB',
             titleSub: '',
             aboutEyebrow: 'About the Project',
             aboutTitle: 'How Artificial Intelligence <br><span>Transforms <b>Cinema and Perception</b></span>',
@@ -406,7 +406,7 @@ i18n.use(initReactI18next).init({
           home: {
             title: 'AI Cinema Lab',
             heroText: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
-            titleMain: 'AI Cinema Lab',
+            titleMain: 'AI Cinema LAB',
             titleSub: '',
             aboutEyebrow: 'Жоба туралы',
             aboutTitle: 'Жасанды интеллект <br><span><b>кино мен қабылдауды</b> қалай өзгертеді</span>',
@@ -615,7 +615,7 @@ i18n.use(initReactI18next).init({
           home: {
             title: 'AI Cinema Lab',
             heroText: 'Digital Actors and Deepfakes: How Artificial Intelligence Is Changing Cinematic Performance',
-            titleMain: 'AI Cinema Lab',
+            titleMain: 'AI Cinema LAB',
             titleSub: '',
             aboutEyebrow: 'О проекте',
             aboutTitle: 'Как искусственный интеллект <br><span>трансформирует <b>кино и восприятие</b></span>',
